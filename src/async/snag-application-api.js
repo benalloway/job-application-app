@@ -1,7 +1,5 @@
 const API_URL = process.env.API_URL ?? "http://0.0.0.0:8000"
 
-console.log("api url: ", API_URL)
-
 export async function postJobApplication({Name, Questions}) {
     let data, error;
 

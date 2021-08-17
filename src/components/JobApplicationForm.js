@@ -91,9 +91,9 @@ export default function JobApplicationForm({onSubmit}){
         <form onSubmit={handleSubmit} action="#" method="POST" className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
         
           <div className="sm:col-span-2">
-            <label className="block text-sm font-medium text-gray-700" htmlFor="Name">What is your name?</label>
+            <label className="block text-sm font-medium text-gray-700" htmlFor="Name">What is your name? *</label>
             <div className="mt-1">
-              <input onChange={HandleNameChange} value={Name} className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" type="text" id="Name" name="Name" />
+              <input required onChange={HandleNameChange} value={Name} className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" type="text" id="Name" name="Name" />
             </div>
           </div>
 
