@@ -1,4 +1,4 @@
-const API_URL = process.env.API_URL ?? "http://0.0.0.0:8000"
+const API_URL = process.env.REACT_APP_API_URL ?? "http://0.0.0.0:8000"
 
 export default async function postJobApplication({Name, Questions}) {
     let data, error;
