@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import { useHistory } from 'react-router'
 
 export default function JobApplicationForm({onSubmit}){
     const [Name, setName] = useState('')
@@ -9,21 +10,24 @@ export default function JobApplicationForm({onSubmit}){
     {Id: "4", Answer: false, Question: "willingToDrive"}
 ])
 
+    const history = useHistory()
+
     function HandleNameChange(e) {
         setName(e.target.value)
     }
 
     function handleInputChange(e) {
-        const {checked, name: Question} = e.target
+        const {checked:Answer, name: Question} = e.target
         const Id = e.target.dataset.id
         const newFormData = [...formData]
-        newFormData[Id - 1] = {Id, Answer: checked ? "yes" : "no", Question}
+        newFormData[Id - 1] = {Id, Answer, Question}
         setFormData(newFormData)
     }
 
     function handleSubmit(e){
         e.preventDefault()
         onSubmit({Name, Questions: formData})
+        history.push("/")
     }
     return (
     <div className="bg-white py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24">
@@ -87,7 +91,7 @@ export default function JobApplicationForm({onSubmit}){
         <form onSubmit={handleSubmit} action="#" method="POST" className="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
         
           <div className="sm:col-span-2">
-            <label className="block text-sm font-medium text-gray-700" htmlFor="Name">What is your name?"</label>
+            <label className="block text-sm font-medium text-gray-700" htmlFor="Name">What is your name?</label>
             <div className="mt-1">
               <input onChange={HandleNameChange} value={Name} className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" type="text" id="Name" name="Name" />
             </div>

@@ -8,13 +8,13 @@ export async function postJobApplication({Name, Questions}) {
     try {
       const response = await fetch(`${API_URL}/api/applications`, {
           method: "POST",
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify({
             Name,
             Questions,
           }),
-          headers: {
-            "Content-Type": "application/json",
-          },
       });
 
     data = await response.json();

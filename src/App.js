@@ -16,13 +16,10 @@ function App() {
       <div>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Qualified Allications</Link>
           </li>
           <li>
-            <Link to="/applicationForm">Application Form</Link>
-          </li>
-          <li>
-            <Link to="/applicationsList">Applications List</Link>
+            <Link to="/applicationForm">Submit an Application</Link>
           </li>
         </ul>
 
@@ -42,34 +39,22 @@ function App() {
           <Route path="/applicationForm">
             <ApplicationForm />
           </Route>
-          <Route path="/applicationsList">
-            <ApplicationsList />
-          </Route>
         </Switch>
       </div>
     </Router>
   );
 }
 
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
-    </div>
-  );
-}
-
 function ApplicationForm() {
   function handleSubmit(formData) {
-    postJobApplication(JSON.stringify(formData))
-    console.log(formData)
+    postJobApplication(formData)
   }
   return (
       <JobApplicationForm onSubmit={handleSubmit} />
   );
 }
 
-function ApplicationsList() {
+function Home() {
   const [applications, setApplications] = React.useState(null)
   
   React.useEffect(()=>{
@@ -77,7 +62,7 @@ function ApplicationsList() {
       setApplications(r.data)
     })
     
-  })
+  },[])
 
   if(!applications) return null
   else {
@@ -87,9 +72,9 @@ function ApplicationsList() {
         <ul>
           {applications.map(a => {
             return (
-              <li>
-              <h3>{a.Name}</h3>
-            </li>
+              <li key={a.Name}>
+                <h3>{a.Name}</h3>
+              </li>
             )
           })}
         </ul>
