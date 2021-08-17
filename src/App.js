@@ -1,4 +1,5 @@
 import JobApplicationForm from "./components/JobApplicationForm";
+import postJobApplication from "./async/snag-application-api"
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
   // { Id: "4", Question: "are you willing to drive more than 1000 miles a month?", Answer: "yes" },
 
   function handleSubmit(formData) {
-    
+    postJobApplication(JSON.stringify(formData))
     console.log(formData)
   }
 

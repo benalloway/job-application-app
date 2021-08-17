@@ -2,17 +2,22 @@ import {useState} from 'react'
 
 export default function JobApplicationForm({onSubmit}){
     const [Name, setName] = useState('')
-    const [formData, setFormData] = useState([])
+    const [formData, setFormData] = useState([
+    {Id: "1", Answer: false, Question: "ownCar"}, 
+    {Id: "2", Answer: false, Question: "validLicense"}, 
+    {Id: "3", Answer: false, Question: "dui"}, 
+    {Id: "4", Answer: false, Question: "willingToDrive"}
+])
 
     function HandleNameChange(e) {
         setName(e.target.value)
     }
 
     function handleInputChange(e) {
-        const {checked: Answer, name: Question} = e.target
+        const {checked, name: Question} = e.target
         const Id = e.target.dataset.id
         const newFormData = [...formData]
-        newFormData[Id - 1] = {Id, Answer, Question}
+        newFormData[Id - 1] = {Id, Answer: checked ? "yes" : "no", Question}
         setFormData(newFormData)
     }
 
@@ -131,25 +136,6 @@ export default function JobApplicationForm({onSubmit}){
             <div className="flex items-center h-5">
             <input
                 onClick={handleInputChange}
-                id="dui"
-                data-id="3"
-                aria-describedby="do-you-own-a-car"
-                name="dui"
-                type="checkbox"
-                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-            />
-            </div>
-            <div className="ml-3 text-sm">
-                <label htmlFor="dui" className="font-medium text-gray-700">
-                    Have you ever had a DUI?
-                </label>
-            </div>
-        </div>
-
-        <div className="sm:col-span-2 relative flex items-start">
-            <div className="flex items-center h-5">
-            <input
-                onClick={handleInputChange}
                 id="willingToDrive"
                 data-id="4"
                 aria-describedby="do-you-own-a-car"
@@ -161,6 +147,25 @@ export default function JobApplicationForm({onSubmit}){
             <div className="ml-3 text-sm">
                 <label htmlFor="willingToDrive" className="font-medium text-gray-700">
                 Are you willing to drive over 1k miles a month?
+                </label>
+            </div>
+        </div>
+
+        <div className="sm:col-span-2 relative flex items-start">
+            <div className="flex items-center h-5">
+            <input
+                onClick={handleInputChange}
+                id="dui"
+                data-id="3"
+                aria-describedby="do-you-own-a-car"
+                name="dui"
+                type="checkbox"
+                className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+            />
+            </div>
+            <div className="ml-3 text-sm">
+                <label htmlFor="dui" className="font-medium text-gray-700">
+                    Have you ever had a DUI?
                 </label>
             </div>
         </div>
