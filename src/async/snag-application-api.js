@@ -6,7 +6,7 @@ export async function postJobApplication({Name, Questions}) {
     let data, error;
 
     try {
-      const response = await fetch(`${API_URL}/applications`, {
+      const response = await fetch(`${API_URL}/api/applications`, {
           method: "POST",
           body: JSON.stringify({
             Name,
@@ -35,7 +35,7 @@ export async function getJobApplications() {
   let data, error;
 
   try {
-    const response = await fetch(`${API_URL}/applications`, {
+    const response = await fetch(`${API_URL}/api/applications`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 import {
   BrowserRouter as Router,
   Switch,
@@ -70,13 +70,32 @@ function ApplicationForm() {
 }
 
 function ApplicationsList() {
-  const applications = getJobApplications().then((data, error) => console.log(data))
+  const [applications, setApplications] = React.useState(null)
+  
+  React.useEffect(()=>{
+    getJobApplications().then(r => {
+      setApplications(r.data)
+    })
+    
+  })
 
-  return (
-    <div>
-      <h2>Accepted Applications: </h2>
-    </div>
-  );
+  if(!applications) return null
+  else {
+    return (
+      <div>
+        <h2>Accepted Applications from: </h2>
+        <ul>
+          {applications.map(a => {
+            return (
+              <li>
+              <h3>{a.Name}</h3>
+            </li>
+            )
+          })}
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default App;
