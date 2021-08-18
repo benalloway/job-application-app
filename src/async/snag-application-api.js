@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_URL ?? ""
 
-export async function postJobApplication({name, email, questions}) {
+export async function postJobApplication({job_listing_id, name, email, questions}) {
     let data, error;
 
     try {
@@ -10,6 +10,7 @@ export async function postJobApplication({name, email, questions}) {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
+            job_listing_id,
             name,
             email,
             questions,

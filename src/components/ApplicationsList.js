@@ -1,5 +1,6 @@
 
   export default function ApplicationsList({applications}) {
+    console.log(applications)
     return (
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -24,6 +25,12 @@
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
+                      Job Listing
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
                       Questions
                     </th>
                   </tr>
@@ -33,6 +40,7 @@
                     <tr key={app.name}>
                       <td className="px-6 py-4 whitespace-normal text-sm font-medium text-gray-900">{app.name}</td>
                       <td className="px-6 py-4 whitespace-normal text-sm font-medium text-gray-900">{app.email}</td>
+                      <td className="px-6 py-4 whitespace-normal text-sm font-medium text-gray-900">{app.job_listing_id.title}</td>
                       <td className="px-6 py-4 whitespace-normal text-sm text-gray-500 space-x-2">
                       {app.questions.map((q) => (
                           <span key={q.Id}>

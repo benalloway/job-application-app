@@ -4,6 +4,8 @@ import { useHistory } from 'react-router'
 export default function JobApplicationForm({onSubmit}){
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')  
+
+    const job_listing_id = "e84f7e28-c8c7-4588-8f81-e2a51e776564"
     
     const [formData, setFormData] = useState([
     {Id: "1", Answer: "", Question: "ownCar"}, 
@@ -30,7 +32,7 @@ export default function JobApplicationForm({onSubmit}){
 
     function handleSubmit(e){
         e.preventDefault()
-        onSubmit({name, email, questions: formData})
+        onSubmit({job_listing_id, name, email, questions: formData})
         history.push("/")
     }
     return (
