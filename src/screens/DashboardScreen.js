@@ -38,7 +38,7 @@ export default function DashboardScreen() {
 
         setStats([
             { name: 'Total Applications', stat: totalApplications },
-            { name: 'Qualified Applications', stat: totalQualified },
+            { name: 'Accepted Applications', stat: totalQualified },
             { name: 'Rejected Applications', stat: totalRejected },
           ])
     }, [qualifiedApplications, rejectedApplications])

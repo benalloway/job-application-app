@@ -12,8 +12,8 @@ import QualifiedApplicationsScreen from "./screens/QualifiedApplicationsScreen"
 
 const navigation = [
   { name: 'Dashboard', href: '/' },
-  { name: 'Submit an Application', href: '/job-application-form' },
-  { name: 'Qualified Allications', href: '/qualified-applications' },
+  { name: 'Submit Application', href: '/job-application-form' },
+  { name: 'Accepted Applications', href: '/qualified-applications' },
 ]
 
 function App() {
