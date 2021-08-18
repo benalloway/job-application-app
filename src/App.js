@@ -60,24 +60,35 @@ function Home() {
   if(!applications) return null
   else {
     return (
-      <div>
-        <h2>Accepted Applications from: </h2>
-        <ul>
-          {applications.map(a => {
-            return (
-              <li key={a.Name}>
-                <h3>{a.Name}</h3>
-                  <div className="flex">
-                {a.Questions?.map(q => {
+      <div className="bg-white py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24">
+      <div className="relative max-w-xl mx-auto text-center">
+        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Accepted Applications from: </h2>
+        <ul className="divide-y divide-gray-200">
+        {applications.map((app) => (
+          <li
+            key={app.Id}
+            className="relative bg-white py-5 px-4 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600"
+          >
+            <div className="flex justify-between space-x-3">
+              <div className="min-w-0 flex-1">
+                  <span className="absolute inset-0" aria-hidden="true" />
+                  <p className="text-sm font-medium text-gray-900 truncate">{app.name}</p>
+              </div>
+              {/* <time dateTime={app.datetime} className="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">
+                {app.datetime}
+              </time> */}
+            </div>
+            <div className="mt-1">
+              <ul className="line-clamp-2 text-sm text-gray-600">{app.questions?.map(q => {
                   return (
-                      <p>Question: {q.Question} - Answer: {q.Answer ? "Yes" : "No"}</p>
+                      <li key={q.Question}>{q.Question}: <i>{q.Answer ? "Yes" : "No"}</i></li>
                     )
-                })}
-                </div>
-              </li>
-            )
-          })}
-        </ul>
+                })}</ul>
+            </div>
+          </li>
+        ))}
+      </ul>
+      </div>
       </div>
     );
   }

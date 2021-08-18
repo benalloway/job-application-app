@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { useHistory } from 'react-router'
 
 export default function JobApplicationForm({onSubmit}){
-    const [Name, setName] = useState('')
+    const [name, setName] = useState('')
     const [formData, setFormData] = useState([
     {Id: "1", Answer: false, Question: "ownCar"}, 
     {Id: "2", Answer: false, Question: "validLicense"}, 
@@ -26,7 +26,7 @@ export default function JobApplicationForm({onSubmit}){
 
     function handleSubmit(e){
         e.preventDefault()
-        onSubmit({Name, Questions: formData})
+        onSubmit({name, questions: formData})
         history.push("/")
     }
     return (
@@ -93,7 +93,7 @@ export default function JobApplicationForm({onSubmit}){
           <div className="sm:col-span-2">
             <label className="block text-sm font-medium text-gray-700" htmlFor="Name">What is your name? *</label>
             <div className="mt-1">
-              <input required onChange={HandleNameChange} value={Name} className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" type="text" id="Name" name="Name" />
+              <input required onChange={HandleNameChange} value={name} className="py-3 px-4 block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 rounded-md" type="text" id="Name" name="Name" />
             </div>
           </div>
 
