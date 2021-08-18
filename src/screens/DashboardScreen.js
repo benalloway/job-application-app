@@ -2,13 +2,23 @@ import * as React from "react"
 import StatsComponent from "../components/StatsComponent"
 import {getJobApplications, getRejectedJobApplications} from "../async/snag-application-api"
 
-const time = "30 days"
-
 export default function DashboardScreen() {
     const [qualifiedApplications, setQualifiedApplications] = React.useState(null)
     const [rejectedApplications, setRejectedApplications] = React.useState(null)
+    const [stats, setStats] = React.useState(null)
+    
+    React.useEffect(()=>{
+      getJobApplications().then(result => {
+        setQualifiedApplications(result.data)
+      })
+      
+      getRejectedJobApplications().then(result => {
+        setRejectedApplications(result.data)
+      })
+      
+    },[])
 
-    function handleStats() {
+    React.useEffect(() => {
         let totalQualified, totalRejected, totalApplications = 0
 
         if(!qualifiedApplications){ 
@@ -26,23 +36,12 @@ export default function DashboardScreen() {
         
         totalApplications = totalQualified + totalRejected
 
-        return [
+        setStats([
             { name: 'Total Applications', stat: totalApplications },
             { name: 'Qualified Applications', stat: totalQualified },
             { name: 'Rejected Applications', stat: totalRejected },
-          ]
-    }
-    
-    React.useEffect(()=>{
-      getJobApplications().then(result => {
-        setQualifiedApplications(result.data)
-      })
-      
-      getRejectedJobApplications().then(result => {
-        setRejectedApplications(result.data)
-      })
-      
-    },[])
+          ])
+    }, [qualifiedApplications, rejectedApplications])
 
     return (
        <div className="bg-white py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24">
@@ -92,7 +91,7 @@ export default function DashboardScreen() {
             <rect width={404} height={404} fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
           </svg>
              <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Dashboard</h2>
-             <StatsComponent stats={handleStats()} />
+             {!stats ? null : (<StatsComponent stats={stats} />)}
            </div>
        </div>
     )
