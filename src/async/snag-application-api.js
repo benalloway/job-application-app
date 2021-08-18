@@ -53,3 +53,28 @@ export async function getJobApplications() {
 
 return { data, error };
 }
+
+export async function getRejectedJobApplications() {
+  let data, error;
+
+  try {
+    const response = await fetch(`${API_URL}/api/rejected-applications`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+    });
+
+  data = await response.json();
+
+  if (!response.ok) {
+    error = data.error;
+    data = null;
+  }
+} catch (err) {
+  error = err;
+  data = null;
+}
+
+return { data, error };
+}

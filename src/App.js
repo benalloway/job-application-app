@@ -10,13 +10,18 @@ import DashboardScreen from "./screens/DashboardScreen"
 import SubmitAnApplicationScreen from "./screens/SubmitAnApplicationScreen"
 import QualifiedApplicationsScreen from "./screens/QualifiedApplicationsScreen"
 
+const navigation = [
+  { name: 'Dashboard', href: '/' },
+  { name: 'Submit an Application', href: '/job-application-form' },
+  { name: 'Qualified Allications', href: '/qualified-applications' },
+]
 
 function App() {
 
   return (
     <Router>
       <div>
-        <Header />
+        <Header navigationElements={navigation} />
 
         <Switch>
           <Route exact path="/">
