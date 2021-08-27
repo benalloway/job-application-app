@@ -1,9 +1,9 @@
 import * as React from "react"
-import {getJobApplications} from "../async/snag-application-api"
+import { getJobApplications } from "../async/snag-application-api"
 import ApplicationsList from "../components/ApplicationsList"
 
 
-export default function QualifiedApplicationsScreen() {
+export default function AcceptedApplicationsScreen() {
     const [applications, setApplications] = React.useState(null)
     
     React.useEffect(()=>{
@@ -62,7 +62,7 @@ export default function QualifiedApplicationsScreen() {
             </defs>
             <rect width={404} height={404} fill="url(#85737c0e-0916-41d7-917f-596dc7edfa27)" />
           </svg>
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-4">Qualified Applications</h2>
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl mb-4">Accepted Applications</h2>
           <ApplicationsList applications={applications} />
         </div>
         </div>

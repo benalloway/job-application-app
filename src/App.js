@@ -8,12 +8,12 @@ import {
 import Header from "./components/Header";
 import DashboardScreen from "./screens/DashboardScreen"
 import SubmitAnApplicationScreen from "./screens/SubmitAnApplicationScreen"
-import QualifiedApplicationsScreen from "./screens/QualifiedApplicationsScreen"
+import AcceptedApplicationsScreen from "./screens/AcceptedApplicationsScreen"
 
 const navigation = [
   { name: 'Dashboard', href: '/' },
-  { name: 'Submit Application', href: '/job-application-form' },
-  { name: 'Accepted Applications', href: '/qualified-applications' },
+  { name: 'Apply Now!', href: '/apply-now' },
+  { name: 'Accepted Applications', href: '/applications-list' },
 ]
 
 function App() {
@@ -27,11 +27,11 @@ function App() {
           <Route exact path="/">
             <DashboardScreen />
           </Route>
-          <Route path="/job-application-form">
+          <Route path="/apply-now">
             <SubmitAnApplicationScreen />
           </Route>
-          <Route path="/qualified-applications">
-            <QualifiedApplicationsScreen />
+          <Route path="/applications-list">
+            <AcceptedApplicationsScreen />
           </Route>
         </Switch>
       </div>

@@ -3,13 +3,13 @@ import StatsComponent from "../components/StatsComponent"
 import {getJobApplications, getRejectedJobApplications} from "../async/snag-application-api"
 
 export default function DashboardScreen() {
-    const [qualifiedApplications, setQualifiedApplications] = React.useState(null)
+    const [acceptedApplications, setAcceptedApplications] = React.useState(null)
     const [rejectedApplications, setRejectedApplications] = React.useState(null)
     const [stats, setStats] = React.useState(null)
     
     React.useEffect(()=>{
       getJobApplications().then(result => {
-        setQualifiedApplications(result.data)
+        setAcceptedApplications(result.data)
       })
       
       getRejectedJobApplications().then(result => {
@@ -19,12 +19,12 @@ export default function DashboardScreen() {
     },[])
 
     React.useEffect(() => {
-        let totalQualified, totalRejected, totalApplications = 0
+        let totalAccepted, totalRejected, totalApplications = 0
 
-        if(!qualifiedApplications){ 
-            totalQualified = 0
+        if(!acceptedApplications){ 
+            totalAccepted = 0
         } else {
-            totalQualified = qualifiedApplications?.length
+            totalAccepted = acceptedApplications?.length
         }
 
         if(!rejectedApplications) {
@@ -34,14 +34,14 @@ export default function DashboardScreen() {
         }
         
         
-        totalApplications = totalQualified + totalRejected
+        totalApplications = totalAccepted + totalRejected
 
         setStats([
             { name: 'Total Applications', stat: totalApplications },
-            { name: 'Accepted Applications', stat: totalQualified },
+            { name: 'Accepted Applications', stat: totalAccepted },
             { name: 'Rejected Applications', stat: totalRejected },
           ])
-    }, [qualifiedApplications, rejectedApplications])
+    }, [acceptedApplications, rejectedApplications])
 
     return (
        <div className="bg-white py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24">
