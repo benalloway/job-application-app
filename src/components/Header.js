@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
               </div>
             </div>
           </div>
-          <div className="py-4 flex flex-wrap justify-center space-x-4 lg:hidden">
+          <div className="py-4 flex flex-wrap justify-center space-x-3 md:space-x-4 lg:hidden">
             {navigationElements.map((link) => (
               <a key={link.name} href={link.href} className="text-base font-medium text-white hover:text-indigo-50">
                 {link.name}

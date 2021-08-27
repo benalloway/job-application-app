@@ -13,7 +13,7 @@ import AcceptedApplicationsScreen from "./screens/AcceptedApplicationsScreen"
 const navigation = [
   { name: 'Dashboard', href: '/' },
   { name: 'Apply Now!', href: '/apply-now' },
-  { name: 'Accepted Applications', href: '/applications-list' },
+  { name: 'Applications', href: '/applications-list' },
 ]
 
 function App() {
